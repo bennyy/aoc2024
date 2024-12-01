@@ -6,7 +6,7 @@ use std::path::Path;
 /// # Arguments
 ///
 /// * `day` - The day of the puzzle.
-/// * `part` - The part of the puzzle (1 or 2).
+/// * `part` - The part of the puzzle (1 or 2). If not specified, it will only search for a file named "test_day_XX.txt".
 /// * `file_number` - An optional file number to distinguish between multiple test files.
 ///
 /// # Returns
@@ -17,11 +17,22 @@ use std::path::Path;
 ///
 /// Panics if the input file cannot be read.
 #[cfg(test)]
-pub fn read_test_input(day: u32, part: u32, file_number: Option<u32>) -> String {
-    let file_name = if let Some(number) = file_number {
-        format!("test_day_{:02}_part{}_{}.txt", day, part, number)
-    } else {
-        format!("test_day_{:02}_part{}.txt", day, part)
+pub fn read_test_input(day: u32, part: Option<u32>, file_number: Option<u32>) -> String {
+    let file_name = match part {
+        Some(part) => {
+            if let Some(number) = file_number {
+                format!("test_day_{:02}_part{}_{}.txt", day, part, number)
+            } else {
+                format!("test_day_{:02}_part{}.txt", day, part)
+            }
+        }
+        None => {
+            if let Some(number) = file_number {
+                format!("test_day_{:02}_{}.txt", day, number)
+            } else {
+                format!("test_day_{:02}.txt", day)
+            }
+        }
     };
     let path = Path::new("inputs").join(file_name);
 
