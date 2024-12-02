@@ -80,7 +80,7 @@ impl Puzzle for Day1 {
 
 #[cfg(test)]
 mod tests {
-    use crate::filehelper::read_test_input;
+    use crate::filehelper::{read_input, read_test_input};
 
     use super::*;
 
@@ -96,6 +96,17 @@ mod tests {
     }
 
     #[test]
+    fn test_day2_part_1_real() {
+        let mut puzzle = Day1::new();
+        let input = read_input(puzzle.day());
+
+        puzzle.execute_part_1(&input);
+
+        let result = puzzle.get_result_part_1();
+        assert_eq!(result, Some("2113135".to_string()));
+    }
+
+    #[test]
     fn test_day1_part_2() {
         let mut puzzle = Day1::new();
         let input = read_test_input(puzzle.day(), None, None);
@@ -104,5 +115,16 @@ mod tests {
 
         let result = puzzle.get_result_part_2();
         assert_eq!(result, Some("31".to_string()));
+    }
+
+    #[test]
+    fn test_day1_part_2_real() {
+        let mut puzzle = Day1::new();
+        let input = read_input(puzzle.day());
+
+        puzzle.execute_part_2(&input);
+
+        let result = puzzle.get_result_part_2();
+        assert_eq!(result, Some("19097157".to_string()));
     }
 }
