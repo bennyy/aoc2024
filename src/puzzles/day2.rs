@@ -39,7 +39,6 @@ fn check_report(row: &[i32]) -> bool {
     let expected = row.len() - 1;
 
     increases == expected || decreases == expected
-
 }
 
 impl Puzzle for Day2 {
