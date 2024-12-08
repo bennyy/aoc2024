@@ -17,6 +17,7 @@ fn main() {
     aoc.add_puzzle(3, Box::new(puzzles::day3::Day3::new()));
     aoc.add_puzzle(4, Box::new(puzzles::day4::Day4::new()));
     aoc.add_puzzle(5, Box::new(puzzles::day5::Day5::new()));
+    aoc.add_puzzle(6, Box::new(puzzles::day6::Day6::new()));
 
     // Define widths for table columns
     let day_width = 5;
