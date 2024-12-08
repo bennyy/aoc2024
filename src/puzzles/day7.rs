@@ -35,19 +35,31 @@ fn calibration_equation(
         let new_value = match operator {
             Operator::Add => current_value + next_value,
             Operator::Mul => current_value * next_value,
-            Operator::Con => {
-                format!("{}{}", current_value, next_value)
-                    .parse::<i64>()
-                    .unwrap_or(0)
-            }
+            Operator::Con => format!("{}{}", current_value, next_value)
+                .parse::<i64>()
+                .unwrap_or(0),
         };
 
         if new_value <= goal {
             for &next_operator in &[Operator::Add, Operator::Mul] {
-                calibration_equation(new_value, rest, next_operator, results, goal, allow_concatenation);
+                calibration_equation(
+                    new_value,
+                    rest,
+                    next_operator,
+                    results,
+                    goal,
+                    allow_concatenation,
+                );
             }
             if allow_concatenation {
-                calibration_equation(new_value, rest, Operator::Con, results, goal, allow_concatenation);
+                calibration_equation(
+                    new_value,
+                    rest,
+                    Operator::Con,
+                    results,
+                    goal,
+                    allow_concatenation,
+                );
             }
         }
     } else if current_value == goal {
