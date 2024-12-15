@@ -16,11 +16,11 @@ impl Day<X> {
 
 impl Puzzle for Day<X> {
     fn execute_part_1(&mut self, input: &str) {
-        self.part_1_result = Some("0".len().to_string());
+        self.part_1_result = Some("0".to_string());
     }
 
     fn execute_part_2(&mut self, input: &str) {
-        self.part_2_result = Some("0".len().to_string());
+        self.part_2_result = Some("0".to_string());
     }
 
     fn get_result_part_1(&self) -> Option<String> {
@@ -50,7 +50,7 @@ mod tests {
         puzzle.execute_part_1(&input);
 
         let result = puzzle.get_result_part_1();
-        assert_eq!(result, Some("14".to_string()));
+        assert_eq!(result, Some("0".to_string()));
     }
 
     #[test]
@@ -61,7 +61,7 @@ mod tests {
         puzzle.execute_part_1(&input);
 
         let result = puzzle.get_result_part_1();
-        assert_eq!(result, Some("220".to_string()));
+        assert_eq!(result, Some("0".to_string()));
     }
 
     #[test]

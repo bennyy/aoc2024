@@ -152,14 +152,14 @@ impl Puzzle for Day9 {
         for (idx, file_id, file_size) in files.iter() {
             disk_map_map
                 .entry(*idx)
-                .or_insert_with(Vec::new)
+                .or_default()
                 .push((*file_id, *file_size));
         }
 
         for (idx, _, free_space) in free_space.iter() {
             disk_map_map
                 .entry(*idx)
-                .or_insert_with(Vec::new)
+                .or_default()
                 .push((None, *free_space));
         }
 
